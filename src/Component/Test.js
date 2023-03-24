@@ -1,6 +1,6 @@
 import React from 'react';
 import '../style.css';
-export default function Test({ children }) {
+export default function Test({ children, index, removeComponent }) {
   const animation = React.useRef(0);
   const [width, setWidth] = React.useState(100);
 
@@ -12,10 +12,12 @@ export default function Test({ children }) {
           return e - 1;
         }
         pauseInterval();
-        return e;
+        removeComponent(children);
+        return 0;
       });
     }, 100);
   };
+
   const pauseInterval = () => {
     clearInterval(animation.current);
   };
