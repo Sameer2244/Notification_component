@@ -8,28 +8,58 @@ export default function App() {
   const removeComponent = React.useCallback((data) => {
     setTestarr((e) => e.filter((item) => item !== data));
   }, []);
-  const addElement = () => {
+  const addElement = (nottype) => {
     counter.current = counter.current + 1;
-    setTestarr((e) => [...e, `notification ${counter.current}`]);
+    setTestarr((e) => [...e, `${nottype}-${counter.current}`]);
   };
   return (
     <div>
       <div className="notification-buttons">
-        <div className="button info">Info</div>
-        <div className="button success">Success</div>
-        <div className="button warning">Warning</div>
-        <div className="button error">Error</div>
+        <div
+          onClick={() => {
+            addElement('info');
+          }}
+          className="button info"
+        >
+          Info
+        </div>
+        <div
+          onClick={() => {
+            addElement('success');
+          }}
+          className="button success"
+        >
+          Success
+        </div>
+        <div
+          onClick={() => {
+            addElement('warning');
+          }}
+          className="button warning"
+        >
+          Warning
+        </div>
+        <div
+          onClick={() => {
+            addElement('error');
+          }}
+          className="button error"
+        >
+          Error
+        </div>
       </div>
-      {Testarr.map((e, i) => {
-        return (
-          <div key={e}>
-            {console.log(Testarr)}
-            <Test index={i} removeComponent={removeComponent}>
-              {e}
-            </Test>
-          </div>
-        );
-      })}
+      <div className="notifications-container">
+        {Testarr.map((e, i) => {
+          return (
+            <div key={e}>
+              {console.log(Testarr)}
+              <Test index={i} removeComponent={removeComponent}>
+                {e}
+              </Test>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

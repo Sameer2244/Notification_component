@@ -26,12 +26,12 @@ export default function Test({ children, index, removeComponent }) {
   }, []);
   return (
     <div
-      className="test"
+      className="notification"
       onMouseEnter={pauseInterval}
       onMouseLeave={animateWidth}
-      style={{ width: `${width}%` }}
     >
       {children}
+      <div className="animator" style={{ width: `${width}%` }}></div>
     </div>
   );
 }
