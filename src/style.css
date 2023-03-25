@@ -10,3 +10,32 @@ p {
   padding: 2rem;
   color: white;
 }
+
+.notification-buttons {
+  padding: 2rem;
+  margin: auto;
+  width: fit-content;
+}
+
+.button {
+  text-align: center;
+  padding: 0.5rem 4rem;
+  margin: 1rem;
+  border-radius: 0.5rem;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  cursor: pointer;
+}
+
+.warning {
+  background-color: rgb(253, 199, 83);
+}
+.info {
+  background-color: rgb(83, 171, 253);
+}
+.error {
+  background-color: rgb(253, 83, 83);
+}
+.success {
+  background-color: rgb(97, 253, 83);
+}
