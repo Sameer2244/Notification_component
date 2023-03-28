@@ -1,17 +1,24 @@
 import React from 'react';
 import './style.css';
-import Test from './Component/Test.js';
-
+import Notification from './Component/Notification.js';
+import { useNotification } from './Component/NotificationManager';
 export default function App() {
+  const { showNotification } = useNotification();
   const [Testarr, setTestarr] = React.useState([]);
   const counter = React.useRef(0);
   const removeComponent = React.useCallback((data) => {
     setTestarr((e) => e.filter((item) => item !== data));
   }, []);
   const addElement = (nottype) => {
-    counter.current = counter.current + 1;
-    setTestarr((e) => [...e, `${nottype}-${counter.current}`]);
+    showNotification({
+      id: counter.current,
+      message: `${nottype} Notification`,
+      setTestarr,
+      counter,
+      nottype,
+    });
   };
+
   return (
     <div>
       <div className="notification-buttons">
@@ -52,10 +59,9 @@ export default function App() {
         {Testarr.map((e, i) => {
           return (
             <div key={e}>
-              {console.log(Testarr)}
-              <Test index={i} removeComponent={removeComponent}>
+              <Notification index={i} removeComponent={removeComponent}>
                 {e}
-              </Test>
+              </Notification>
             </div>
           );
         })}

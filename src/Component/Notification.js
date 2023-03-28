@@ -1,12 +1,11 @@
 import React from 'react';
 import '../style.css';
-export default function Test({ children, index, removeComponent }) {
+export default function Notification({ children, index, removeComponent }) {
   const animation = React.useRef(0);
   const [width, setWidth] = React.useState(100);
 
   const animateWidth = () => {
     animation.current = setInterval(() => {
-      // console.log(width);
       setWidth((e) => {
         if (e > 0) {
           return e - 1;
